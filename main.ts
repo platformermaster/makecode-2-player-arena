@@ -4,6 +4,12 @@ namespace SpriteKind {
     export const ShotProjectile = SpriteKind.create()
     export const invincable = SpriteKind.create()
 }
+/**
+ * Most of these functions are pointless it is important to look over way left
+ */
+/**
+ * Damage physics and knockback
+ */
 sprites.onOverlap(SpriteKind.Projectile2, SpriteKind.Player, function (sprite, otherSprite) {
     statusbar.value += 0 - P2_Damage
     P2_Special_Fillage += P2_Damage * 20
@@ -15,6 +21,9 @@ sprites.onOverlap(SpriteKind.Projectile2, SpriteKind.Player, function (sprite, o
     otherSprite
     )
 })
+/**
+ * These are the players special abilities and you will want to focus on these. Look closely at the blocks and add a fire effect  during every ability. To tell if a ability needs to be added you can tell by 1 block in the codes place. I can do cooldowns later.
+ */
 controller.player2.onButtonEvent(ControllerButton.B, ControllerButtonEvent.Pressed, function () {
     if (Game_Phase == 3) {
         if (P2_Special == 0) {
@@ -877,6 +886,7 @@ scene.onHitWall(SpriteKind.ShotProjectile, function (sprite, location) {
         tiles.setWallAt(location, false)
     }
 })
+// This block is for creating players image
 function Make_player_images () {
     mySprite = sprites.create(img`
         2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
@@ -1445,6 +1455,9 @@ forever(function () {
         P2_Facing = 3
     }
 })
+/**
+ * This is for player creation and stat fromage
+ */
 forever(function () {
     if (Game_Phase <= 1) {
         if (controller.player2.isPressed(ControllerButton.A)) {
